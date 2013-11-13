@@ -1,12 +1,13 @@
 all: test
 
-TIMESTAMP=$(shell date +%Y%m%d-%H%M%S)
+testsets:
+	git submodule update --init
 
-checkyaml:
-	perl ../bin/dataset_checker.pl
+checkyaml: testsets
+	perl woothee/bin/dataset_checker.pl
 
-lib/woothee/dataset.rb: ../dataset.yaml
-	ruby ../bin/dataset_yaml2rb.rb
+lib/woothee/dataset.rb: testsets
+	ruby scripts/dataset_yaml2rb.rb
 	sync; sync; sync
 
 test: lib/woothee/dataset.rb

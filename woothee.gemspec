@@ -1,10 +1,9 @@
 # encoding: utf-8
-# $:.push File.expand_path('../lib', __FILE__)
 
 Gem::Specification.new do |gem|
   gem.name        = "woothee"
   gem.description = "Cross-language UserAgent classifier library, ruby implementation"
-  gem.homepage    = "https://github.com/tagomoris/woothee"
+  gem.homepage    = "https://github.com/woothee/woothee-ruby"
   gem.summary     = gem.description
   gem.version     = "0.3.4"
   gem.authors     = ["TAGOMORI Satoshi"]

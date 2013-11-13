@@ -5,7 +5,7 @@ $LOAD_PATH.push '../lib' unless $LOAD_PATH.include?('../lib')
 require 'yaml'
 require 'woothee'
 
-TESTSET_DIR = File.dirname(__FILE__) + "/../../testsets/";
+TESTSET_DIR = File.dirname(__FILE__) + "/../woothee/testsets/";
 
 TARGETS = [
            ['crawler.yaml','Crawler'],['crawler_google.yaml','Crawler/Google'],
