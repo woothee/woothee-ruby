@@ -1,4 +1,4 @@
-# Woothee
+# Woothee ruby
 
 The Ruby implementation of Project Woothee, which is multi-language user-agent strings parsers.
 
