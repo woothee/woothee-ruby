@@ -9,6 +9,18 @@ module Woothee::OS
   def self.challenge_windows(ua, result)
     return false if ua.index("Windows").nil?
 
+    # Xbox Series
+    if ua.index("Xbox")
+      data = if ua.index("Xbox; Xbox One)")
+               Woothee::DataSet.get("XboxOne")
+             else
+               Woothee::DataSet.get("Xbox360")
+             end
+      # update browser as appliance
+      update_map(result, data)
+      return true
+    end
+
     data = Woothee::DataSet.get('Win')
     unless ua =~ /Windows ([ .a-zA-Z0-9]+)[;\\)]/o
       # Windows, but version unknown

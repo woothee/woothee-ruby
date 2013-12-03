@@ -33,7 +33,7 @@ end
 
 module Woothee::DataSet
   DATASET = {}
-  # GENERATED from dataset.yaml at Wed Nov 13 20:59:55 JST 2013 by tagomoris
+  # GENERATED from dataset.yaml at Tue Dec  3 19:37:52 JST 2013 by tagomoris
   obj = {:label => 'MSIE', :name => 'Internet Explorer', :type => :browser}
   obj[:vendor] = 'Microsoft'
   DATASET[obj[:label]] = obj
@@ -194,6 +194,21 @@ module Woothee::DataSet
   obj[:vendor] = 'Sony'
   obj[:category] = :appliance
   obj[:os] = 'PlayStation 3'
+  DATASET[obj[:label]] = obj
+  obj = {:label => 'PS4', :name => 'PlayStation 4', :type => :full}
+  obj[:vendor] = 'Sony'
+  obj[:category] = :appliance
+  obj[:os] = 'PlayStation 4'
+  DATASET[obj[:label]] = obj
+  obj = {:label => 'Xbox360', :name => 'Xbox 360', :type => :full}
+  obj[:vendor] = 'Microsoft'
+  obj[:category] = :appliance
+  obj[:os] = 'Xbox 360'
+  DATASET[obj[:label]] = obj
+  obj = {:label => 'XboxOne', :name => 'Xbox One', :type => :full}
+  obj[:vendor] = 'Microsoft'
+  obj[:category] = :appliance
+  obj[:os] = 'Xbox One'
   DATASET[obj[:label]] = obj
   obj = {:label => 'DigitalTV', :name => 'InternetTVBrowser', :type => :full}
   obj[:category] = :appliance

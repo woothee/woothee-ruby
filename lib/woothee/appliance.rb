@@ -11,6 +11,7 @@ module Woothee::Appliance
            when ua.index('PSP (PlayStation Portable);') then Woothee::DataSet.get('PSP')
            when ua.index('PlayStation Vita') then Woothee::DataSet.get('PSVita')
            when ua.index('PLAYSTATION 3 ') || ua.index('PLAYSTATION 3;') then Woothee::DataSet.get('PS3')
+           when ua.index('PlayStation 4 ') then Woothee::DataSet.get('PS4')
            else nil
            end
     return false unless data
