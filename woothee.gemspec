@@ -5,7 +5,7 @@ Gem::Specification.new do |gem|
   gem.description = "Cross-language UserAgent classifier library, ruby implementation"
   gem.homepage    = "https://github.com/woothee/woothee-ruby"
   gem.summary     = gem.description
-  gem.version     = "0.3.5"
+  gem.version     = "0.3.8"
   gem.authors     = ["TAGOMORI Satoshi"]
   gem.email       = "tagomoris@gmail.com"
   gem.has_rdoc    = false
