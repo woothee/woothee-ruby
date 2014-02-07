@@ -11,7 +11,7 @@ module Woothee::Browser
 
     version = if ua =~ /MSIE ([.0-9]+);/o
                 $1
-              elsif ua =~ /Trident\/([.0-9]+); rv ([.0-9]+)/o
+              elsif ua =~ /Trident\/([.0-9]+); rv:([.0-9]+)/o
                 $2
               else
                 Woothee::VALUE_UNKNOWN
