@@ -1,11 +1,15 @@
 # encoding: utf-8
 
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require 'woothee/version'
+
 Gem::Specification.new do |gem|
   gem.name        = "woothee"
   gem.description = "Cross-language UserAgent classifier library, ruby implementation"
   gem.homepage    = "https://github.com/woothee/woothee-ruby"
   gem.summary     = gem.description
-  gem.version     = "0.3.9"
+  gem.version     = Woothee::VERSION
   gem.authors     = ["TAGOMORI Satoshi"]
   gem.email       = "tagomoris@gmail.com"
   gem.has_rdoc    = false

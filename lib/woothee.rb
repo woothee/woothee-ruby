@@ -8,6 +8,8 @@ require 'woothee/crawler'
 require 'woothee/appliance'
 require 'woothee/misc'
 
+require 'woothee/version'
+
 module Woothee
   def self.parse(useragent)
     fill_result(exec_parse(useragent))
