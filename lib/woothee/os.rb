@@ -92,9 +92,10 @@ module Woothee::OS
            end
 
     if result[Woothee::KEY_NAME] && result[Woothee::KEY_NAME] == Woothee::DataSet.get('Firefox')[Woothee::KEY_NAME]
-        # Firefox OS specific pattern
-        # http://lawrencemandel.com/2012/07/27/decision-made-firefox-os-user-agent-string/
-      if ua =~ /^Mozilla\/[.0-9]+ \(Mobile;(.*;)? rv:[.0-9]+\) Gecko\/[.0-9]+ Firefox\/[.0-9]+$/
+      # Firefox OS specific pattern
+      # http://lawrencemandel.com/2012/07/27/decision-made-firefox-os-user-agent-string/
+      # https://github.com/woothee/woothee/issues/2
+      if ua =~ /^Mozilla\/[.0-9]+ \((?:Mobile|Tablet);(.*;)? rv:[.0-9]+\) Gecko\/[.0-9]+ Firefox\/[.0-9]+$/
         data = Woothee::DataSet.get('FirefoxOS')
       end
     end
