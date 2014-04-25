@@ -174,6 +174,8 @@ module Woothee::OS
              Woothee::DataSet.get('MacOS')
            when ua.index('X11; FreeBSD ')
              Woothee::DataSet.get('BSD')
+           when ua.index('X11; CrOS ')
+             Woothee::DataSet.get('ChromeOS')
            else
              nil
            end
