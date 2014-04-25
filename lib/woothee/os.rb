@@ -58,7 +58,7 @@ module Woothee::OS
       data = case
              when ua.index('iPhone;') then Woothee::DataSet.get('iPhone')
              when ua.index('iPad;') then Woothee::DataSet.get('iPad')
-             when ua.index('iPod;') then Woothee::DataSet.get('iPod')
+             when ua.index('iPod') then Woothee::DataSet.get('iPod')
              else data
              end
     end
