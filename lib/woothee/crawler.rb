@@ -58,6 +58,10 @@ module Woothee::Crawler
         update_map(result, Woothee::DataSet.get('YahooJP'))
         return true
       end
+      if ua.index('Y!J-BRZ/YATSHA crawler') || ua.index('Y!J-BRY/YATSH crawler')
+        update_map(result, Woothee::DataSet.get('YahooJP'))
+        return true
+      end
       if ua.index('Yahoo Pipes')
         update_map(result, Woothee::DataSet.get('YahooPipes'))
         return true
