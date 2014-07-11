@@ -28,7 +28,7 @@ describe Woothee do
       [:name, :category, :os, :version, :vendor].each do |attribute|
         it groupname + ("test(%s): %s" % [attribute, e['target']]) do
           if [:name, :category].include?(attribute) or ([:os, :version, :vendor].include?(attribute) and e.has_key?(attribute.to_s))
-            r[attribute].to_s.should eql(e[attribute.to_s])
+            expect(r[attribute].to_s).to eql(e[attribute.to_s])
           end
         end
       end
