@@ -36,7 +36,7 @@ module Woothee::OS
            when version == 'NT 6.1' then Woothee::DataSet.get('Win7')
            when version == 'NT 6.0' then Woothee::DataSet.get('WinVista')
            when version == 'NT 5.1' then Woothee::DataSet.get('WinXP')
-           when version =~ /^Phone OS/o then Woothee::DataSet.get('WinPhone')
+           when version =~ /^Phone/o then Woothee::DataSet.get('WinPhone')
            when version == 'NT 5.0' then Woothee::DataSet.get('Win2000')
            when version == 'NT 4.0' then Woothee::DataSet.get('WinNT4')
            when version == '98' then Woothee::DataSet.get('Win98') # wow, WinMe is shown as 'Windows 98; Win9x 4.90', fxxxk
