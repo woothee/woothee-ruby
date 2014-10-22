@@ -47,6 +47,7 @@ module Woothee::OS
            end
     update_category(result, data[Woothee::KEY_CATEGORY])
     update_os(result, data[Woothee::KEY_NAME])
+    update_os_version(result, version)
     true
   end
 
@@ -166,23 +167,30 @@ module Woothee::OS
   end
 
   def self.challenge_misc(ua, result)
-    data = case
-           when ua.index('(Win98;')
-             Woothee::DataSet.get('Win98')
-           when ua.index('Macintosh; U; PPC;')
-             Woothee::DataSet.get('MacOS')
-           when ua.index('Mac_PowerPC')
-             Woothee::DataSet.get('MacOS')
-           when ua.index('X11; FreeBSD ')
-             Woothee::DataSet.get('BSD')
-           when ua.index('X11; CrOS ')
-             Woothee::DataSet.get('ChromeOS')
-           else
-             nil
-           end
+    data = nil
+    os_version = nil
+    case
+    when ua.index('(Win98;')
+      data = Woothee::DataSet.get('Win98')
+      os_version = "98"
+    when ua.index('Macintosh; U; PPC;')
+      data = Woothee::DataSet.get('MacOS')
+    when ua.index('Mac_PowerPC')
+      data = Woothee::DataSet.get('MacOS')
+    when ua.index('X11; FreeBSD ')
+      data = Woothee::DataSet.get('BSD')
+    when ua.index('X11; CrOS ')
+      data = Woothee::DataSet.get('ChromeOS')
+    else
+      nil
+    end
+
     if data
       update_category(result, data[Woothee::KEY_CATEGORY])
       update_os(result, data[Woothee::KEY_NAME])
+      if os_version
+        update_os_version(result, os_version)
+      end
       return true
     end
 
