@@ -82,13 +82,21 @@ module Woothee::OS
   def self.challenge_linux(ua, result)
     return false if ua.index('Linux').nil?
 
-    data = if ua.index('Android')
-             Woothee::DataSet.get('Android')
-           else
-             Woothee::DataSet.get('Linux')
-           end
+    data = nil
+    os_version = nil
+    if ua.index('Android')
+      data = Woothee::DataSet.get('Android')
+      if ua =~ /Android[- ](\d+\.\d+(?:\.\d+)?)/
+        os_version = $1
+      end
+    else
+      data = Woothee::DataSet.get('Linux')
+    end
     update_category(result, data[Woothee::KEY_CATEGORY])
     update_os(result, data[Woothee::KEY_NAME])
+    if os_version
+      update_os_version(result, os_version)
+    end
     true
   end
 
