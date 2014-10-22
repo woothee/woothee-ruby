@@ -15,7 +15,7 @@ describe Woothee::DataSet do
     expect { Woothee::CATEGORY_LIST }.not_to raise_error()
     expect(Woothee::ATTRIBUTE_LIST).to eql([
         Woothee::ATTRIBUTE_NAME, Woothee::ATTRIBUTE_CATEGORY, Woothee::ATTRIBUTE_OS,
-        Woothee::ATTRIBUTE_VENDOR, Woothee::ATTRIBUTE_VERSION,
+        Woothee::ATTRIBUTE_VENDOR, Woothee::ATTRIBUTE_VERSION, Woothee::ATTRIBUTE_OS_VERSION,
       ])
     expect(Woothee::CATEGORY_LIST).to eql([
         Woothee::CATEGORY_PC, Woothee::CATEGORY_SMARTPHONE, Woothee::CATEGORY_MOBILEPHONE,

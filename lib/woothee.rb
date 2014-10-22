@@ -152,6 +152,7 @@ module Woothee
     Woothee::ATTRIBUTE_NAME => Woothee::VALUE_UNKNOWN,
     Woothee::ATTRIBUTE_CATEGORY => Woothee::VALUE_UNKNOWN,
     Woothee::ATTRIBUTE_OS => Woothee::VALUE_UNKNOWN,
+    Woothee::ATTRIBUTE_OS_VERSION => Woothee::VALUE_UNKNOWN,
     Woothee::ATTRIBUTE_VERSION => Woothee::VALUE_UNKNOWN,
     Woothee::ATTRIBUTE_VENDOR => Woothee::VALUE_UNKNOWN,
   }.freeze

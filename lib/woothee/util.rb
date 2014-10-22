@@ -21,4 +21,8 @@ module Woothee::Util
   def update_os(target, os)
     target[Woothee::ATTRIBUTE_OS] = os
   end
+
+  def update_os_version(target, version)
+    target[Woothee::ATTRIBUTE_OS_VERSION] = version
+  end
 end

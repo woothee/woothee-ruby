@@ -5,6 +5,7 @@ module Woothee
   KEY_TYPE = :type
   KEY_CATEGORY = :category
   KEY_OS = :os
+  KEY_OS_VERSION = :os_version
   KEY_VENDOR = :vendor
   KEY_VERSION = :version
 
@@ -22,18 +23,19 @@ module Woothee
   ATTRIBUTE_NAME = :name
   ATTRIBUTE_CATEGORY = :category
   ATTRIBUTE_OS = :os
+  ATTRIBUTE_OS_VERSION = :os_version
   ATTRIBUTE_VENDOR = :vendor
   ATTRIBUTE_VERSION = :version
 
   VALUE_UNKNOWN = "UNKNOWN"
 
   CATEGORY_LIST = [CATEGORY_PC,CATEGORY_SMARTPHONE,CATEGORY_MOBILEPHONE,CATEGORY_CRAWLER,CATEGORY_APPLIANCE,CATEGORY_MISC,VALUE_UNKNOWN]
-  ATTRIBUTE_LIST = [ATTRIBUTE_NAME,ATTRIBUTE_CATEGORY,ATTRIBUTE_OS,ATTRIBUTE_VENDOR,ATTRIBUTE_VERSION]
+  ATTRIBUTE_LIST = [ATTRIBUTE_NAME,ATTRIBUTE_CATEGORY,ATTRIBUTE_OS,ATTRIBUTE_VENDOR,ATTRIBUTE_VERSION,ATTRIBUTE_OS_VERSION]
 end
 
 module Woothee::DataSet
   DATASET = {}
-  # GENERATED from dataset.yaml at Sat Jul  5 01:54:48 JST 2014 by h_nakamura
+  # GENERATED from dataset.yaml at Wed Oct 22 20:17:46 JST 2014 by tagomoris
   obj = {:label => 'MSIE', :name => 'Internet Explorer', :type => :browser}
   obj[:vendor] = 'Microsoft'
   DATASET[obj[:label]] = obj
