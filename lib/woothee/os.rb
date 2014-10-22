@@ -63,6 +63,9 @@ module Woothee::OS
              when ua.index('iPod') then Woothee::DataSet.get('iPod')
              else data
              end
+      if ua =~ /; CPU(?: iPhone)? OS (\d+_\d+(?:_\d+)?) like Mac OS X/
+        version = $1.gsub(/_/, '.')
+      end
     else
       if ua =~ /Mac OS X (10[._]\d+(?:[._]\d+)?)(?:\)|;)/
         version = $1.gsub(/_/, '.')
