@@ -55,6 +55,7 @@ module Woothee::OS
     return false if ua.index('Mac OS X').nil?
 
     data = Woothee::DataSet.get('OSX')
+    version = nil
     if ua.index('like Mac OS X')
       data = case
              when ua.index('iPhone;') then Woothee::DataSet.get('iPhone')
@@ -62,9 +63,16 @@ module Woothee::OS
              when ua.index('iPod') then Woothee::DataSet.get('iPod')
              else data
              end
+    else
+      if ua =~ /Mac OS X (10[._]\d+(?:[._]\d+)?)(?:\)|;)/
+        version = $1.gsub(/_/, '.')
+      end
     end
     update_category(result, data[Woothee::KEY_CATEGORY])
     update_os(result, data[Woothee::KEY_NAME])
+    if version
+      update_os_version(result, version)
+    end
     true
   end
 
@@ -175,12 +183,21 @@ module Woothee::OS
       os_version = "98"
     when ua.index('Macintosh; U; PPC;')
       data = Woothee::DataSet.get('MacOS')
+      if ua =~ /rv:(\d+\.\d+\.\d+)/
+        os_version = $1
+      end
     when ua.index('Mac_PowerPC')
       data = Woothee::DataSet.get('MacOS')
     when ua.index('X11; FreeBSD ')
       data = Woothee::DataSet.get('BSD')
+      if ua =~ /FreeBSD ([^;\)]+);/
+        os_version = $1
+      end
     when ua.index('X11; CrOS ')
       data = Woothee::DataSet.get('ChromeOS')
+      if ua =~ /CrOS ([^\)]+)\)/
+        os_version = $1
+      end
     else
       nil
     end
