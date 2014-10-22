@@ -36,7 +36,9 @@ module Woothee::OS
            when version == 'NT 6.1' then Woothee::DataSet.get('Win7')
            when version == 'NT 6.0' then Woothee::DataSet.get('WinVista')
            when version == 'NT 5.1' then Woothee::DataSet.get('WinXP')
-           when version =~ /^Phone/o then Woothee::DataSet.get('WinPhone')
+           when version =~ /^Phone(?: OS)? ([.0-9]+)/o
+             version = $1
+             Woothee::DataSet.get('WinPhone')
            when version == 'NT 5.0' then Woothee::DataSet.get('Win2000')
            when version == 'NT 4.0' then Woothee::DataSet.get('WinNT4')
            when version == '98' then Woothee::DataSet.get('Win98') # wow, WinMe is shown as 'Windows 98; Win9x 4.90', fxxxk
@@ -101,22 +103,33 @@ module Woothee::OS
   end
 
   def self.challenge_smartphone(ua, result)
-    data = case
-           when ua.index('iPhone') then Woothee::DataSet.get('iPhone')
-           when ua.index('iPad') then Woothee::DataSet.get('iPad')
-           when ua.index('iPod') then Woothee::DataSet.get('iPod')
-           when ua.index('Android') then Woothee::DataSet.get('Android')
-           when ua.index('CFNetwork') then Woothee::DataSet.get('iOS')
-           when ua.index('BlackBerry') then Woothee::DataSet.get('BlackBerry')
-           else nil
-           end
+    data = nil
+    os_version = nil
+    case
+    when ua.index('iPhone')
+      data = Woothee::DataSet.get('iPhone')
+    when ua.index('iPad')
+      data = Woothee::DataSet.get('iPad')
+    when ua.index('iPod')
+      data = Woothee::DataSet.get('iPod')
+    when ua.index('Android')
+      data = Woothee::DataSet.get('Android')
+    when ua.index('CFNetwork')
+      data = Woothee::DataSet.get('iOS')
+    when ua.index('BlackBerry')
+      data = Woothee::DataSet.get('BlackBerry')
+      if ua =~ /BlackBerry(?:\d+)\/([.0-9]+) /
+        os_version = $1
+      end
+    end
 
     if result[Woothee::KEY_NAME] && result[Woothee::KEY_NAME] == Woothee::DataSet.get('Firefox')[Woothee::KEY_NAME]
       # Firefox OS specific pattern
       # http://lawrencemandel.com/2012/07/27/decision-made-firefox-os-user-agent-string/
       # https://github.com/woothee/woothee/issues/2
-      if ua =~ /^Mozilla\/[.0-9]+ \((?:Mobile|Tablet);(.*;)? rv:[.0-9]+\) Gecko\/[.0-9]+ Firefox\/[.0-9]+$/
+      if ua =~ /^Mozilla\/[.0-9]+ \((?:Mobile|Tablet);(?:.*;)? rv:([.0-9]+)\) Gecko\/[.0-9]+ Firefox\/[.0-9]+$/
         data = Woothee::DataSet.get('FirefoxOS')
+        os_version = $1
       end
     end
 
@@ -124,6 +137,9 @@ module Woothee::OS
 
     update_category(result, data[Woothee::KEY_CATEGORY])
     update_os(result, data[Woothee::KEY_NAME])
+    if os_version
+      update_os_version(result, os_version)
+    end
     true
   end
 
