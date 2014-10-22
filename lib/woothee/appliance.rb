@@ -7,16 +7,36 @@ module Woothee::Appliance
   extend Woothee::Util
 
   def self.challenge_playstation(ua, result)
-    data = case
-           when ua.index('PSP (PlayStation Portable);') then Woothee::DataSet.get('PSP')
-           when ua.index('PlayStation Vita') then Woothee::DataSet.get('PSVita')
-           when ua.index('PLAYSTATION 3 ') || ua.index('PLAYSTATION 3;') then Woothee::DataSet.get('PS3')
-           when ua.index('PlayStation 4 ') then Woothee::DataSet.get('PS4')
-           else nil
-           end
+    data = nil
+    os_version = nil
+    case
+    when ua.index('PSP (PlayStation Portable);')
+      data = Woothee::DataSet.get('PSP')
+      if ua =~ /PSP \(PlayStation Portable\); ([.0-9]+)\)/
+        os_version = $1
+      end
+    when ua.index('PlayStation Vita')
+      data = Woothee::DataSet.get('PSVita')
+      if ua =~ /PlayStation Vita ([.0-9]+)\)/
+        os_version = $1
+      end
+    when ua.index('PLAYSTATION 3 ') || ua.index('PLAYSTATION 3;')
+      data = Woothee::DataSet.get('PS3')
+      if ua =~ /PLAYSTATION 3;? ([.0-9]+)\)/
+        os_version = $1
+      end
+    when ua.index('PlayStation 4 ')
+      data = Woothee::DataSet.get('PS4')
+      if ua =~ /PlayStation 4 ([.0-9]+)\)/
+        os_version = $1
+      end
+    end
     return false unless data
 
     update_map(result, data)
+    if os_version
+      update_os_version(result, os_version)
+    end
     true
   end
 
