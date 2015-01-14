@@ -11,8 +11,8 @@ module Woothee::Browser
 
     version = if ua =~ /MSIE ([.0-9]+);/o
                 $1
-              elsif ua =~ /Trident\/([.0-9]+);(?: BOIE[0-9]+;[A-Z]+;)? rv:([.0-9]+)/o
-                $2
+              elsif ua =~ /Trident\/([.0-9]+);/o && ua =~ / rv:([.0-9]+)/
+                $1
               elsif ua =~ /IEMobile\/([.0-9]+);/o
                 $1
               else
