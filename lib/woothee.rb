@@ -22,7 +22,7 @@ module Woothee
   def self.exec_parse(useragent)
     result = {}
 
-    return result if useragent.length < 1 or useragent == '-'
+    return result if useragent.nil? or useragent.length < 1 or useragent == '-'
 
     if try_crawler(useragent, result)
       return result

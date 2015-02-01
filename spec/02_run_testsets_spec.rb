@@ -19,6 +19,7 @@ TARGETS = [
            ['pc_lowpriority.yaml','PC/LowPriority'],
            ['misc.yaml','Misc'],
            ['crawler_nonmajor.yaml','Crawler/NonMajor'],
+           ['blank.yaml','Blank'],
           ]
 
 describe Woothee do
