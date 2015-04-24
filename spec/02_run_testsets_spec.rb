@@ -26,11 +26,18 @@ describe Woothee do
   TARGETS.each do |filename,groupname|
     YAML.load_file(TESTSET_DIR + filename).each do |e|
       r = Woothee.parse(e['target'])
-      [:name, :category, :os, :version, :vendor, :os_version].each do |attribute|
-        it groupname + ("test(%s): %s" % [attribute, e['target']]) do
-          if [:name, :category].include?(attribute) or ([:os, :version, :vendor, :os_version].include?(attribute) and e.has_key?(attribute.to_s))
-            expect(r[attribute].to_s).to eql(e[attribute.to_s])
+      context groupname do
+        [:name, :category, :os, :version, :vendor, :os_version].each do |attribute|
+          it  ("test(%s): %s" % [attribute, e['target']]) do
+            if [:name, :category].include?(attribute) or ([:os, :version, :vendor, :os_version].include?(attribute) and e.has_key?(attribute.to_s))
+              expect(r[attribute].to_s).to eql(e[attribute.to_s])
+            end
           end
+        end
+
+        it "test(is_crawler): #{e['target']}" do
+          is_major_crawler = e['category'] == 'crawler' && e['name'] != 'misc crawler'
+          expect(Woothee.is_crawler(e['target'])).to eq(is_major_crawler)
         end
       end
     end

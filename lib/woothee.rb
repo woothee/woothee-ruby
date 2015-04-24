@@ -16,7 +16,7 @@ module Woothee
  end
 
   def self.is_crawler(useragent)
-    useragent.length > 0 and useragent != '-' and try_crawler(useragent, {})
+    !!useragent && useragent.length > 0 and useragent != '-' and try_crawler(useragent, {})
   end
 
   def self.exec_parse(useragent)
