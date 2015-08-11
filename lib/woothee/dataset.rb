@@ -35,8 +35,11 @@ end
 
 module Woothee::DataSet
   DATASET = {}
-  # GENERATED from dataset.yaml at Wed Oct 22 20:17:46 JST 2014 by tagomoris
+  # GENERATED from dataset.yaml at Thu Jul 30 22:03:06 JST 2015 by ytera
   obj = {:label => 'MSIE', :name => 'Internet Explorer', :type => :browser}
+  obj[:vendor] = 'Microsoft'
+  DATASET[obj[:label]] = obj
+  obj = {:label => 'Edge', :name => 'Edge', :type => :browser}
   obj[:vendor] = 'Microsoft'
   DATASET[obj[:label]] = obj
   obj = {:label => 'Chrome', :name => 'Chrome', :type => :browser}
@@ -55,6 +58,9 @@ module Woothee::DataSet
   obj[:vendor] = 'Fenrir Inc.'
   DATASET[obj[:label]] = obj
   obj = {:label => 'Win', :name => 'Windows UNKNOWN Ver', :type => :os}
+  obj[:category] = :pc
+  DATASET[obj[:label]] = obj
+  obj = {:label => 'Win10', :name => 'Windows 10', :type => :os}
   obj[:category] = :pc
   DATASET[obj[:label]] = obj
   obj = {:label => 'Win8.1', :name => 'Windows 8.1', :type => :os}
@@ -280,6 +286,9 @@ module Woothee::DataSet
   obj[:category] = :crawler
   DATASET[obj[:label]] = obj
   obj = {:label => 'facebook', :name => 'facebook', :type => :full}
+  obj[:category] = :crawler
+  DATASET[obj[:label]] = obj
+  obj = {:label => 'twitter', :name => 'twitter', :type => :full}
   obj[:category] = :crawler
   DATASET[obj[:label]] = obj
   obj = {:label => 'mixi', :name => 'mixi', :type => :full}
