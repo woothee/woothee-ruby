@@ -97,6 +97,10 @@ module Woothee::Crawler
       update_map(result, Woothee::DataSet.get('facebook'))
       return true
     end
+    if ua.index('Twitterbot/')
+      update_map(result, Woothee::DataSet.get('twitter'))
+      return true
+    end
     if ua.index('ichiro')
       if ua.index('http://help.goo.ne.jp/door/crawler.html') or ua.index('compatible; ichiro/mobile goo;')
         update_map(result, Woothee::DataSet.get('goo'))
