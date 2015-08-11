@@ -117,14 +117,14 @@ module Woothee::OS
       data = Woothee::DataSet.get('Android')
     when ua.index('CFNetwork')
       data = Woothee::DataSet.get('iOS')
+    when ua.index('BB10')
+      data = Woothee::DataSet.get('BlackBerry10')
+      if ua =~ /BB10(?:.+)Version\/([.0-9]+)/
+        os_version = $1
+      end
     when ua.index('BlackBerry')
       data = Woothee::DataSet.get('BlackBerry')
       if ua =~ /BlackBerry(?:\d+)\/([.0-9]+) /
-        os_version = $1
-      end
-    when ua.index('BB10')
-      data = Woothee::DataSet.get('BlackBerry')
-      if ua =~ /BB10(?:.+)Version\/([.0-9]+)/
         os_version = $1
       end
     end
