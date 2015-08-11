@@ -77,6 +77,8 @@ module Woothee
 
     return true if Woothee::Browser.challenge_opera(useragent, result)
 
+    return true if Woothee::Browser.challenge_webview(useragent, result)
+
     false
   end
 

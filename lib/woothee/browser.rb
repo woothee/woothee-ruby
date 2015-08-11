@@ -90,6 +90,26 @@ module Woothee::Browser
     true
   end
 
+  def self.challenge_webview(ua, result)
+    version = Woothee::DataSet.get('VALUE_UNKNOWN')
+
+    # iOS
+    if ua =~ /iP(?:hone;|ad;|od) .*like Mac OS X/
+      return false if ua.index('Safari/')
+
+      version = if ua =~ /Version\/([.0-9]+)/
+                  $1
+                else
+                  Woothee::VALUE_UNKNOWN
+                end
+      update_map(result, Woothee::DataSet.get('Webview'))
+      update_version(result, version)
+      return true
+    end
+
+    false
+  end
+
   def self.challenge_sleipnir(ua, result)
     return false if ua.index('Sleipnir/').nil?
 
