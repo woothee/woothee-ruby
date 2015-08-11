@@ -121,6 +121,11 @@ module Woothee::OS
       if ua =~ /BlackBerry(?:\d+)\/([.0-9]+) /
         os_version = $1
       end
+    when ua.index('BB10')
+      data = Woothee::DataSet.get('BlackBerry')
+      if ua =~ /BB10(?:.+)Version\/([.0-9]+)/
+        os_version = $1
+      end
     end
 
     if result[Woothee::KEY_NAME] && result[Woothee::KEY_NAME] == Woothee::DataSet.get('Firefox')[Woothee::KEY_NAME]
