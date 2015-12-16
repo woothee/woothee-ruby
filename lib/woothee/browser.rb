@@ -36,6 +36,13 @@ module Woothee::Browser
       return true
     end
 
+    if ua =~ /FxiOS\/([.0-9]+)/o
+      version = $1
+      update_map(result, Woothee::DataSet.get('Firefox'))
+      update_version(result, version)
+      return true
+    end
+
     if ua =~ /(?:Chrome|CrMo|CriOS)\/([.0-9]+)/o
       chrome_version = $1
 
