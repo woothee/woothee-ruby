@@ -7,6 +7,7 @@ rvm:
   - "jruby-19mode"
 before_script:
   - git submodule update --init
+  - gem update bundler
   - bundle install
   - bundle update
 script:
