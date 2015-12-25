@@ -13,7 +13,7 @@ require 'woothee/version'
 module Woothee
   def self.parse(useragent)
     fill_result(exec_parse(useragent))
- end
+  end
 
   def self.is_crawler(useragent)
     !!useragent && useragent.length > 0 and useragent != '-' and try_crawler(useragent, {})
