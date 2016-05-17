@@ -71,6 +71,8 @@ module Woothee
   def self.try_browser(useragent, result)
     return true if Woothee::Browser.challenge_msie(useragent, result)
 
+    return true if Woothee::Browser.challenge_vivaldi(useragent, result)
+
     return true if Woothee::Browser.challenge_safari_chrome(useragent, result)
 
     return true if Woothee::Browser.challenge_firefox(useragent, result)

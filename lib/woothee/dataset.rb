@@ -35,7 +35,7 @@ end
 
 module Woothee::DataSet
   DATASET = {}
-  # GENERATED from dataset.yaml at Tue Aug 11 16:54:38 JST 2015 by tagomoris
+  # GENERATED from dataset.yaml at Tue May 17 02:25:25 JST 2016 by yuya
   obj = {:label => 'MSIE', :name => 'Internet Explorer', :type => :browser}
   obj[:vendor] = 'Microsoft'
   DATASET[obj[:label]] = obj
@@ -53,6 +53,9 @@ module Woothee::DataSet
   DATASET[obj[:label]] = obj
   obj = {:label => 'Opera', :name => 'Opera', :type => :browser}
   obj[:vendor] = 'Opera'
+  DATASET[obj[:label]] = obj
+  obj = {:label => 'Vivaldi', :name => 'Vivaldi', :type => :browser}
+  obj[:vendor] = 'Vivaldi Technologies'
   DATASET[obj[:label]] = obj
   obj = {:label => 'Sleipnir', :name => 'Sleipnir', :type => :browser}
   obj[:vendor] = 'Fenrir Inc.'

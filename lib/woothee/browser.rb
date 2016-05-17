@@ -136,4 +136,16 @@ module Woothee::Browser
 
     true
   end
+
+  def self.challenge_vivaldi(ua, result)
+    return false if ua.index('Vivaldi/').nil?
+
+    version = if ua =~ /Vivaldi\/([.0-9]+)/o
+                $1
+              else
+                Woothee::VALUE_UNKNOWN
+              end
+    update_map(result, Woothee::DataSet.get('Vivaldi'))
+    update_version(result, version)
+  end
 end
