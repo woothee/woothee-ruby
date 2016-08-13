@@ -77,6 +77,10 @@ module Woothee::Crawler
         return true
       end
     end
+    if ua.index('BingPreview')
+      update_map(result, Woothee::DataSet.get('BingPreview'))
+      return true
+    end
     if ua.index('Baidu')
       if ua.index('compatible; Baiduspider') or ua.index('Baiduspider+') or ua.index('Baiduspider-image+')
         update_map(result, Woothee::DataSet.get('Baiduspider'))

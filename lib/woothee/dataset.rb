@@ -35,7 +35,7 @@ end
 
 module Woothee::DataSet
   DATASET = {}
-  # GENERATED from dataset.yaml at Tue May 17 02:25:25 JST 2016 by yuya
+  # GENERATED from dataset.yaml at Sat Aug 13 19:45:57 JST 2016 by taise
   obj = {:label => 'MSIE', :name => 'Internet Explorer', :type => :browser}
   obj[:vendor] = 'Microsoft'
   DATASET[obj[:label]] = obj
