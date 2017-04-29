@@ -159,6 +159,10 @@ module Woothee::Crawler
         return true
       end
     end
+    if ua.index('trendictionbot')
+      update_map(result, Woothee::DataSet.get('trendictionbot'))
+      return true
+    end
 
     false
   end
