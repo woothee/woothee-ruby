@@ -25,6 +25,7 @@ module Woothee::Browser
 
   def self.challenge_safari_chrome(ua, result)
     return false if ua.index('Safari/').nil?
+    return false if ua.index('Chrome') && ua.index('wv')
 
     version = Woothee::VALUE_UNKNOWN
 
@@ -98,7 +99,18 @@ module Woothee::Browser
   end
 
   def self.challenge_webview(ua, result)
-    version = Woothee::DataSet.get('VALUE_UNKNOWN')
+    # Android(Lollipop and Above)
+    if ua.index('Chrome') && ua.index('wv')
+      version = if ua =~ /Version\/([.0-9]+)/
+                  $1
+                else
+                  Woothee::VALUE_UNKNOWN
+                end
+
+      update_map(result, Woothee::DataSet.get('Webview'))
+      update_version(result, version)
+      return true
+    end
 
     # iOS
     if ua =~ /iP(?:hone;|ad;|od) .*like Mac OS X/
