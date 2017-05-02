@@ -88,7 +88,7 @@ module Woothee::Crawler
       end
     end
     if ua.index('Yeti')
-      if ['http://help.naver.com/robots', 'http://help.naver.com/support/robots.html', 'http://naver.me/bot'].any? { |url| ua.index(url) }
+      if ua.index('http://help.naver.com/robots') || ua.index('http://help.naver.com/support/robots.html') || ua.index('http://naver.me/bot')
         update_map(result, Woothee::DataSet.get('Yeti'))
         return true
       end
