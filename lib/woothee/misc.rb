@@ -46,6 +46,8 @@ module Woothee::Misc
                      [Woothee::DataSet.get('HTTPLibrary'), 'python']
                    when ua =~ /^(?:PHP|WordPress|CakePHP|PukiWiki|PECL::HTTP)(?:\/| |$)/o || ua =~ /(?:PEAR |)HTTP_Request(?: class|2)/o
                      [Woothee::DataSet.get('HTTPLibrary'), 'php']
+                   when ua.index('curl/') == 0
+                     [Woothee::DataSet.get('HTTPLibrary'), 'curl']
                    else [nil,nil]
                    end
     return false unless data
