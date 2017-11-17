@@ -56,7 +56,7 @@ Woothee.is_crawler("Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; Trident/4
  # => false
 ```
 
-Try to see useragent's category is 'crawler' or not, by casual(fast) method. Minor case of crawlers is not tested in this method. To check crawler strictly, use `Woothee.parse(str)[:category] == 'crawler'`.
+Try to see useragent's category is 'crawler' or not, by casual(fast) method. Minor case of crawlers is not tested in this method. To check crawler strictly, use `Woothee.parse(str)[:category] == :crawler`.
 
 * * * * *
 
