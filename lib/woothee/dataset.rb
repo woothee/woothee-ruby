@@ -35,7 +35,7 @@ end
 
 module Woothee::DataSet
   DATASET = {}
-  # GENERATED from dataset.yaml at Sat Apr 29 16:14:32 JST 2017 by yuya
+  # GENERATED from dataset.yaml at Sun Jul 22 00:57:28 JST 2018 by tell_k
   obj = {:label => 'MSIE', :name => 'Internet Explorer', :type => :browser}
   obj[:vendor] = 'Microsoft'
   DATASET[obj[:label]] = obj
@@ -62,6 +62,9 @@ module Woothee::DataSet
   DATASET[obj[:label]] = obj
   obj = {:label => 'Webview', :name => 'Webview', :type => :browser}
   obj[:vendor] = 'OS vendor'
+  DATASET[obj[:label]] = obj
+  obj = {:label => 'YaBrowser', :name => 'Yandex Browser', :type => :browser}
+  obj[:vendor] = 'Yandex'
   DATASET[obj[:label]] = obj
   obj = {:label => 'Win', :name => 'Windows UNKNOWN Ver', :type => :os}
   obj[:category] = :pc
