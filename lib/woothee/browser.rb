@@ -23,6 +23,19 @@ module Woothee::Browser
     true
   end
 
+  def self.challenge_yandexbrowser(ua, result)
+    return false if ua.index('YaBrowser/').nil?
+
+    version = Woothee::VALUE_UNKNOWN
+    if ua =~ /YaBrowser\/([.0-9]+)/o
+      version = $1
+    end
+
+    update_map(result, Woothee::DataSet.get('YaBrowser'))
+    update_version(result, version)
+    true
+  end
+
   def self.challenge_safari_chrome(ua, result)
     return false if ua.index('Safari/').nil?
     return false if ua.index('Chrome') && ua.index('wv')

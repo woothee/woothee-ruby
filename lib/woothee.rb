@@ -73,6 +73,8 @@ module Woothee
 
     return true if Woothee::Browser.challenge_vivaldi(useragent, result)
 
+    return true if Woothee::Browser.challenge_yandexbrowser(useragent, result)
+
     return true if Woothee::Browser.challenge_safari_chrome(useragent, result)
 
     return true if Woothee::Browser.challenge_firefox(useragent, result)
