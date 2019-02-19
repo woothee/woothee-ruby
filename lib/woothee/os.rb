@@ -89,7 +89,7 @@ module Woothee::OS
     os_version = nil
     if ua.index('Android')
       data = Woothee::DataSet.get('Android')
-      if ua =~ /Android[- ](\d+\.\d+(?:\.\d+)?)/
+      if ua =~ /Android[- ](\d+(?:\.\d+(?:\.\d+)?)?)/
         os_version = $1
       end
     else
