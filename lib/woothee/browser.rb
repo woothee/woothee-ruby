@@ -43,7 +43,7 @@ module Woothee::Browser
     version = Woothee::VALUE_UNKNOWN
 
     # Edge
-    if ua =~ /Edge\/([.0-9]+)/o
+    if ua =~ /(?:Edge|Edg|EdgiOS|EdgA)\/([.0-9]+)/o
       version = $1
       update_map(result, Woothee::DataSet.get('Edge'))
       update_version(result, version)
