@@ -74,6 +74,15 @@ module Woothee::Browser
       return true
     end
 
+    # Google Search App
+    if ua =~ /GSA\/([.0-9]+)/o
+      version = $1
+      p(dataset: Woothee::DataSet.get("GSA"), version: version)
+      update_map(result, Woothee::DataSet.get("GSA"))
+      update_version(result, version)
+      return true
+    end
+
     # Safari
     if ua =~ /Version\/([.0-9]+)/o
       version = $1
