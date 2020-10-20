@@ -42,6 +42,14 @@ module Woothee::Browser
 
     version = Woothee::VALUE_UNKNOWN
 
+    # SamsungBrowser
+    if ua =~ /(?:SamsungBrowser)\/([.0-9]+)/o
+      version = $1
+      update_map(result, Woothee::DataSet.get('SamsungBrowser'))
+      update_version(result, version)
+      return true
+    end
+
     # Edge
     if ua =~ /(?:Edge|Edg|EdgiOS|EdgA)\/([.0-9]+)/o
       version = $1
