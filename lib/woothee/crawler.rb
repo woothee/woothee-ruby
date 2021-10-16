@@ -7,8 +7,6 @@ module Woothee::Crawler
   extend Woothee::Util
 
   def self.challenge_google(ua, result)
-    return false if ua.index('Google').nil?
-
     if ua.index('compatible; Googlebot')
       if ua.index('compatible; Googlebot-Mobile')
         update_map(result, Woothee::DataSet.get('GoogleBotMobile'))
@@ -20,6 +18,14 @@ module Woothee::Crawler
     end
     if ua.index('Googlebot-Image/')
       update_map(result, Woothee::DataSet.get('GoogleBot'))
+      return true
+    end
+    if ua.index('compatible; AdsBot-Google-Mobile') || ua.index('Applebot/')
+      update_map(result, Woothee::DataSet.get('AdsBotGoogleMobile'))
+      return true
+    end
+    if ua.index('AdsBot-Google')
+      update_map(result, Woothee::DataSet.get('AdsBotGoogle'))
       return true
     end
     if ua.index('Mediapartners-Google')
