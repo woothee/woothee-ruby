@@ -18,6 +18,14 @@ module Woothee::Crawler
         return true
       end
     end
+    if ua.index('compatible; AdsBot-Google-Mobile;')
+      update_map(result, Woothee::DataSet.get('AdsBotGoogleMobile'))
+      return true
+    end
+    if ua.index('AdsBot-Google')
+      update_map(result, Woothee::DataSet.get('AdsBotGoogle'))
+      return true
+    end
     if ua.index('Googlebot-Image/')
       update_map(result, Woothee::DataSet.get('GoogleBot'))
       return true
