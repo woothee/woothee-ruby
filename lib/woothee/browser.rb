@@ -181,4 +181,18 @@ module Woothee::Browser
     update_map(result, Woothee::DataSet.get('Vivaldi'))
     update_version(result, version)
   end
+
+  def self.challenge_samsungbrowser(ua, result)
+    return false if ua.index('SamsungBrowser/').nil?
+
+    version = Woothee::VALUE_UNKNOWN
+    if ua =~ /SamsungBrowser\/([.0-9]+)/o
+      version = $1
+    end
+
+    update_map(result, Woothee::DataSet.get('SamsungBrowser'))
+    update_version(result, version)
+    true
+  end
+
 end

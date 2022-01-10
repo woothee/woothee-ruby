@@ -35,7 +35,7 @@ end
 
 module Woothee::DataSet
   DATASET = {}
-  # GENERATED from dataset.yaml at Tue Mar 17 20:33:08 JST 2020 by tagomoris
+  # GENERATED from dataset.yaml at Sun Jan  9 00:14:17 JST 2022 by yuji_developer
   obj = {:label => 'MSIE', :name => 'Internet Explorer', :type => :browser}
   obj[:vendor] = 'Microsoft'
   DATASET[obj[:label]] = obj
@@ -68,6 +68,9 @@ module Woothee::DataSet
   DATASET[obj[:label]] = obj
   obj = {:label => 'YaBrowser', :name => 'Yandex Browser', :type => :browser}
   obj[:vendor] = 'Yandex'
+  DATASET[obj[:label]] = obj
+  obj = {:label => 'SamsungBrowser', :name => 'SamsungBrowser', :type => :browser}
+  obj[:vendor] = 'Samsung'
   DATASET[obj[:label]] = obj
   obj = {:label => 'Win', :name => 'Windows UNKNOWN Ver', :type => :os}
   obj[:category] = :pc
@@ -346,6 +349,12 @@ module Woothee::DataSet
   obj[:category] = :crawler
   DATASET[obj[:label]] = obj
   obj = {:label => 'VariousCrawler', :name => 'misc crawler', :type => :full}
+  obj[:category] = :crawler
+  DATASET[obj[:label]] = obj
+  obj = {:label => 'AdsBotGoogleMobile', :name => 'AdsBot-Google-Mobile', :type => :full}
+  obj[:category] = :crawler
+  DATASET[obj[:label]] = obj
+  obj = {:label => 'AdsBotGoogle', :name => 'AdsBot-Google', :type => :full}
   obj[:category] = :crawler
   DATASET[obj[:label]] = obj
 
