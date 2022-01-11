@@ -10,6 +10,7 @@ Gem::Specification.new do |gem|
   gem.homepage    = "https://github.com/woothee/woothee-ruby"
   gem.summary     = gem.description
   gem.version     = Woothee::VERSION
+  gem.license     = "Apache-2.0"
   gem.authors     = ["TAGOMORI Satoshi"]
   gem.email       = "tagomoris@gmail.com"
   gem.files       = `git ls-files`.split("\n")
